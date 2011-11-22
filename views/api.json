@@ -1,0 +1,32 @@
+{
+  "version": "MC12",
+  "uri": "{{playlist.uri}}",
+  "title": "{{playlist.title}}",
+  "creator": "{{playlist.user.username}}",
+  "image": "{{playlist.image}}",
+  "annotation": "{{playlist.annotation}}",
+  "collaborative": {{playlist.is_collaborative}},
+  "tracks": [
+   {% for song in playlist.songs %}
+    {
+      "uri": "{{ song.uri }}",
+      "title": "{{song.title}}",
+      "artists": [
+        {
+          "uri": "{{song.artist.uri}}",
+          "title": "{{soing.artist.title}}",
+          "image": "{{song.artist.image}}"
+        },
+      ],
+      "album": {
+        "uri": "{{song.album.uri}}",
+          "title": "{{soing.album.title}}",
+          "image": "{{song.album.image}}"
+      },
+      "number": {{song.number}},
+      "duration":{{song.duration}},
+      "starred": {{song.starred}},
+    },
+    {% endfor %}
+  ],
+}

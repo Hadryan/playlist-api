@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<result xmlns="http://mediachrome.me/XML">
+	{% if user %}
+	<username>{{user.username}}</username>
+	{% endif %}
+	{% for playlist in playlists %}
+	<playlist id="{{playlist.id}}">
+		<title><![CDATA[{{playlist.title}}]]></title>
+		<slug><![CDATA[{{playlist.slug}}]]></slug>
+		<user><![CDATA[{{playlist.user}}]]></user>
+		<public><![CDATA[{{playlist.public}}]]></public>
+		{% for attribute in playlist.attributes %}
+		<attribute>
+			<title><![CDATA[{{attribute.title}}]]></title>
+			<value><![CDATA[{{attribute.value}}]]></value>
+		</attribute>
+		{% endfor %}
+	</playlist>
+	{% endfor %}
+	
+	{% if playlist %}
+	<playlist  id="{{playlist.id}}">
+		<id><![CDATA[{{playlist.id}}]]></id>
+		<title><![CDATA[{{playlist.title}}]]></title>
+		<comment><![CDATA[{{playlist.comment}}]]></comment>
+		<image><![CDATA[{{playlist.image}}]]></image>
+		<songs>
+		
+			{% for song in playlist.songs %}
+			<song href="song://mediachrome/{{song.artist}}/{{song.album}}/{{song.title}}/{{song.version}}">
+				<title><![CDATA[{{song.title}}]]></title>
+				<version><![CDATA[{{song.version}}]]></version>
+				<artist><![CDATA[{{song.artist}}]]></artist>
+				<album><![CDATA[{{song.album}}]]></album>
+				<comment><![CDATA[{{song.version}}]]></comment>
+				<user><![CDATA[{{song.user}}]]></user>
+				<uri><![CDATA[song://mediachrome/{{song.artist}}/{{song.album}}/{{song.title}}/{{song.version}}]]></uri>
+			</song>
+			{% endfor %}
+		</songs>
+		{% for attribute in playlist.attributes %}
+		<attribute>
+			<title><![CDATA[{{attribute.title}}]]></title>
+			<value><![CDATA[{{attribute.value}}]]></value>
+		</attribute>
+		{% endfor %}
+	</playlist>
+	{% endif %}
+	
+</result>

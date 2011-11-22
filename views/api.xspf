@@ -1,0 +1,24 @@
+<playlist xmlns="http://xspf.org/ns/0/" xmlns:mc="http://mediachrome/ns/music/1"
+    version="1" sp:version="XYZ123">
+  <identifier>{{ playlist.uri }}</identifier>
+  <title>{{playlist.title}}</title>
+  <creator>{{playlist.user.username}}</creator>
+  <image>{{playlist.image}}</image>
+  <annotation>{{playlist.text}}</annotation>
+  <extension application="http://mediachrome">
+    <mc:meta collaborative="{{playlist.is_collaborative}}" />
+  </extension>
+  <trackList>
+  	{% for song in playlist.songs %}
+    <track>
+      <identifier>{{song.id}}</identifier>
+      <title>{{song.title}}</title>
+      <creator>{{song.artist}}</creator>
+      <album>{{song.album}}</album>
+      <extension application="http://mediachrome">
+       <mc:meta starred="{{song.is_starred}}" />
+      </extension>
+    </track>
+    {% endfor %}
+  </trackList>
+</playlist>
