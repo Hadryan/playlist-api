@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<result xmlns="http://mediachrome.me/XML">
+	{% if user %}
+	<user>
+		<username>{{user.username}}</username>
+		<playlists>
+			<
+		</playlists>

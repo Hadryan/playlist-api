@@ -1,0 +1,2 @@
+{% for song in playlist.songs %}{{ song.uri}}
+{% endfor %}
